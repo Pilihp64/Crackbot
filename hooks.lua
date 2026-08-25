@@ -191,10 +191,13 @@ end
 
 --chat listeners, can read for specific messages, returning true means delete listener
 chatListeners = {}
-function addListener(name,f)
-	if type(f)=="function" then
-		chatListeners[name]=f
+function addListener(name, f)
+	if type(f) == "function" then
+		chatListeners[name] = f
 	end
+end
+function remListener(name)
+	chatListeners[name] = nil
 end
 local function listen(usr,chan,msg)
 	for k,v in pairs(chatListeners) do
